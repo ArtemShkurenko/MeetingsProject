@@ -1,0 +1,6 @@
+@MeetingsApplication_HostAddress = http://localhost:5012
+
+GET {{MeetingsApplication_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
