@@ -7,7 +7,7 @@ namespace MeetingsApplication.DAL
         where TEntity : IRecord,new()
     {
         public List<TEntity> _records = new List<TEntity>();
-        private int idCounter = 1;
+        private int idCounter         = 1;
         internal TEntity DeepCopy(TEntity entity)
         {
             var json = JsonSerializer.Serialize(entity);
@@ -20,17 +20,10 @@ namespace MeetingsApplication.DAL
         }
         public void Create(TEntity entity)
         {
-            var entityCopy = DeepCopy(entity);
-            entityCopy.Id = idCounter++;
+            var entityCopy     = DeepCopy(entity);
+                entityCopy.Id  = idCounter++;
             _records.Add(entityCopy);
         }
-       /* public void Update(TEntity newEntity)
-        {
-            var oldEntity = _records.FirstOrDefault(x => x.Id.Equals(newEntity.Id));
-            _records.Remove(oldEntity);
-            _records.Add(DeepCopy(newEntity));
-
-        }*/
         public IEnumerable<TEntity> GetAll()
         {
             return _records.Select(DeepCopy);

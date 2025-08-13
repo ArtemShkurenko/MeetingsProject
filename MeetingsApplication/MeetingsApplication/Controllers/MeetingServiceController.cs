@@ -24,11 +24,11 @@ namespace MeetingsApplication.Controllers
         [HttpPost("Create")]
         public IActionResult Create(MeetingModel meetingModel)
         {
-            var meeting = new Meeting
+            var meeting      = new Meeting
             {
                 Participants = meetingModel.Participants,
-                StartTime = meetingModel.StartTime.ToUniversalTime(),
-                EndTime = meetingModel.EndTime.ToUniversalTime()
+                StartTime    = meetingModel.StartTime.ToUniversalTime(),
+                EndTime      = meetingModel.EndTime.ToUniversalTime()
             };
             _meetingService.Create(meeting);
             return Accepted();
